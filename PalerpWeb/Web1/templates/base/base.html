@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block extraMeta %}
+    {% endblock %}
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Doc{% endblock %}</title>
+</head>
+<body>
+    {% block nav %}
+        <nav class="top-nav">
+            <div class="nav-wrapper red darken-3">
+                <div class="container">
+
+                    <a href="#!" class="brand-logo grey-text text-lighten-2"><i class="material-icons" style="font-size:30px">library_books</i> Palerp</a>
+                    <a href="#" data-activates="mobile-demo" data-beloworigin="true" class="button-collapse grey-text text-lighten-2"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="grey-text text-lighten-2" href="">Inicio</a></li>
+                        <li><a class="grey-text text-lighten-2" href="">Nosotros</a></li>
+                        <li><a class="grey-text text-lighten-2" href="">Productos</a></li>
+                        <li><a class="grey-text text-lighten-2" href="">Servicios</a></li>
+                        <li><a class="grey-text text-lighten-2" href="">Contactanos</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a class="grey-text" href="">Inicio</a></li>
+                        <li><a class="grey-text" href="">Nosotros</a></li>
+                        <li><a class="grey-text" href="">Productos</a></li>
+                        <li><a class="grey-text" href="">Servicios</a></li>
+                        <li><a class="grey-text" href="">Contactanos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <footer class="page-footer red darken-3">
+        <div class="container">
+            <div class="row">
+            <div class="col l6 s12">
+                <h4 class="white-text">Informacion de contacto</h4>
+                <p class="grey-text text-lighten-4">Calle Magisterio segunda etapa F-14</p>
+                <p class="grey-text text-lighten-4">Palerp@palerp.com</p>
+                <p class="grey-text text-lighten-4">www.palerp.com</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Telefonos</h5>
+                <ul>
+                <li><a class="grey-text text-lighten-3" href="#!">(084) 22-22-22</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">(084) 11-11-11</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">(051) 999-999-999</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright Text
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+
+    {% block extrajs %}
+    {% endblock %}
+</body>
+</html>

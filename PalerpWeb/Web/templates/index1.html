@@ -1,0 +1,117 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title%}Palerp Consultores{% endblock %}
+{% block nav %}
+<nav class="hide-on-large-only">
+    <div class="nav-wrapper white">
+        <div class="container">
+            <a href="#!" class="brand-logo red-text text-darken-3"><i class="material-icons" style="font-size:30px">library_books</i> Palerp</a>
+            <a href="#" data-activates="mobile-demo" data-beloworigin="true" class="button-collapse red-text text-darken-3"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="red-text text-darken-3" href="{% url 'index' %}">Inicio</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'productos' %}">Productos</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'servicios' %}">Servicios</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'contactanos' %}">Contactanos</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a class="red-text text-darken-3" href="{% url 'index' %}">Inicio</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'nosotros' %}">Nosotros</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'productos' %}">Productos</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'servicios' %}">Servicios</a></li>
+                <li><a class="red-text text-darken-3" href="{% url 'contactanos' %}">Contactanos</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="slider fullscreen hide-on-med-and-down">
+    <ul class="slides">
+        <li>
+            <img src="{% static 'images/sli1.jpg' %}"> 
+            <div class="caption center-align">
+                <div class="row">
+                    <a href="{% url 'index' %}" class="waves-effect waves-light btn red darken-3">Inicio</a>
+                    <a href="{% url 'nosotros' %}" class="waves-effect waves-light btn red darken-3">Nosotros</a>
+                    <a href="{% url 'productos' %}" class="waves-effect waves-light btn red darken-3">Productos</a>
+                    <a href="{% url 'servicios' %}" class="waves-effect waves-light btn red darken-3">Servicios</a>
+                    <a href="{% url 'contactanos' %}" class="waves-effect waves-light btn red darken-3">Contactanos</a>
+                </div>
+                <h1 class="black-text"><b>iFacturacion</b></h1>
+                <h3 class="light black-text"><b>Tu software a medida.</b></h3>
+                <a class="waves-effect waves-light btn-large red darken-3">Comenzar ahora!</a>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/sli3.jpg' %}"> 
+            <div class="caption left-align">
+                <div class="row">
+                    <a href="{% url 'index' %}" class="waves-effect waves-light btn red darken-3">Inicio</a>
+                    <a href="{% url 'nosotros' %}" class="waves-effect waves-light btn red darken-3">Nosotros</a>
+                    <a href="{% url 'productos' %}" class="waves-effect waves-light btn red darken-3">Productos</a>
+                    <a href="{% url 'servicios' %}" class="waves-effect waves-light btn red darken-3">Servicios</a>
+                    <a href="{% url 'contactanos' %}" class="waves-effect waves-light btn red darken-3">Contactanos</a>
+                </div>
+                <h1 class="black-text"><b>iFacturacion</b></h1>
+                <h3 class="light black-text"><b>Tu software a medida.</b></h3>
+                <a class="waves-effect waves-light btn-large red darken-3">Comenzar ahora!</a>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/sli2.jpg' %}"> 
+            <div class="caption right-align">
+                <div class="row">
+                    <a href="{% url 'index' %}" class="waves-effect waves-light btn red darken-3">Inicio</a>
+                    <a href="{% url 'nosotros' %}" class="waves-effect waves-light btn red darken-3">Nosotros</a>
+                    <a href="{% url 'productos' %}" class="waves-effect waves-light btn red darken-3">Productos</a>
+                    <a href="{% url 'servicios' %}" class="waves-effect waves-light btn red darken-3">Servicios</a>
+                    <a href="{% url 'contactanos' %}" class="waves-effect waves-light btn red darken-3">Contactanos</a>
+                </div>
+                <h1 class="black-text"><b>iFacturacion</b></h1>
+                    <h3 class="light black-text"><b>Tu software a medida.</b></h3>
+                    <a class="waves-effect waves-light btn-large red darken-3">Comenzar ahora!</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="slider hide-on-large-only">
+    <ul class="slides">
+        <li>
+            <img src="{% static 'images/background1.jpg' %}"> 
+            <div class="caption center-align">
+                <h3>iFacturacion</h3>
+                <h5 class="light grey-text text-lighten-3">Tu software a medida.</h5>
+                <a class="waves-effect waves-light btn red darken-3">Download Now!</a>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/background2.jpg' %}"> 
+            <div class="caption left-align">
+                <h3>iFacturacion</h3>
+                <h5 class="light grey-text text-lighten-3">Tu software a medida.</h5>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/background3.jpg' %}"> 
+            <div class="caption right-align">
+                <h3>iFacturacion</h3>
+                <h5 class="light grey-text text-lighten-3">Tu software a medida.</h5>
+            </div>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block extrajs %}
+<script>
+    $(document).ready(function(){
+      $('.slider').slider({
+          height:700,
+      });
+    });
+        
+        
+</script>
+{% endblock%}

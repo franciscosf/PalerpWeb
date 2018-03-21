@@ -1,0 +1,116 @@
+
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block title%}Palerp Consultores{% endblock %}
+
+{% block content %}
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="{% static 'images/background1.jpg' %}"> 
+            <div class="caption center-align">
+                <h3>iFacturacion</h3>
+                <h5 class="light grey-text text-lighten-3">Tu software a medida.</h5>
+                <a class="waves-effect waves-light btn indigo">Download Now!</a>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/background2.jpg' %}"> 
+            <div class="caption left-align">
+                <h3>iFacturacion</h3>
+                <h5 class="light grey-text text-lighten-3">Tu software a medida.</h5>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/background3.jpg' %}"> 
+            <div class="caption right-align">
+                <h3>iFacturacion</h3>
+                <h5 class="light grey-text text-lighten-3">Tu software a medida.</h5>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">Porque usar facturacion electronica?</h2>
+        <p class="grey-text text-darken-3 lighten-3">La facturación electrónica se ha convertido en una pieza clave en la modernización de la actividad empresarial, razón por la cual debes contemplarla hoy como la mejor práctica en el logro de eficiencias de tu negocio.
+
+                Mediante la facturación electrónica tendrás la oportunidad de estar en una red de negocios, en donde todas las empresas podrán intercambiar documentos comerciales de manera electrónica. Ello les permitirá lograr mayor eficiencia en sus procesos logísticos y contables, ahorrar costos de almacenamiento, minimizar el riesgo de facturas erradas y ayudar en la protección del medio ambiente, y como valor agregado, tener acceso a mejores productos financieros, a través del factoring electrónico.</p>
+</div>
+<div class="carousel ">
+        <a class="carousel-item" href="#one!"><img src="{% static 'images/img1.jpg' %}"></a>
+        <a class="carousel-item" href="#two!"><img src="{% static 'images/img1.jpg' %}"></a>
+        <a class="carousel-item" href="#three!"><img src="{% static 'images/img1.jpg' %}"></a>
+        <a class="carousel-item" href="#four!"><img src="{% static 'images/img1.jpg' %}"></a>
+        <a class="carousel-item" href="#five!"><img src="{% static 'images/img1.jpg' %}"></a>
+      </div>
+</div>
+<div class="parallax-container" style="height:400px">
+    <div class="parallax"><img src="{% static 'images/background1.jpg' %}"></div>
+</div>
+<div class="section white">
+        <h1 class="grey-text text-lighten-1 center-align">Servicios</h1>
+        <div class="container">
+            <hr>
+        </div>
+        <div class="row container">
+                
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'images/sli3.jpg' %}">
+                        </div>
+                        <div class="card-content red darken-3">
+                            <span class="card-title activator black-text">Servicio 1</span>
+                            <p><a href="#">Servicio 1</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l4 hide-on-small-only">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'images/sli3.jpg' %}">
+                        </div>
+                        <div class="card-content red darken-3">
+                            <span class="card-title activator black-text">Servicio 2</span>
+                            <p><a href="#">Servicio 2</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l4 hide-on-med-and-down">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'images/sli3.jpg' %}">
+                        </div>
+                        <div class="card-content red darken-3">
+                            <span class="card-title activator black-text">Servicio 2</span>
+                            <p><a href="#">Servicio 2</a></p>
+                        </div>
+                    </div>
+                </div>
+        <h5 class="right-align"><a class="waves-effect waves-light btn red darken-3">Ver mas</a></h5>
+    </div>
+</div>
+<div class="parallax-container" style="height:400px">
+    <div class="parallax"><img src="{% static 'images/background3.jpg' %}"></div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<script>
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+    $(document).ready(function(){
+      $('.slider').slider({
+        indicators: false,
+        height: 400,
+        interval: 3000,
+    });
+    });
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+        
+</script>
+{% endblock%}

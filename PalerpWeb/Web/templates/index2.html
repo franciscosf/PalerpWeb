@@ -1,0 +1,170 @@
+{% extends 'base/base2.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="{% static 'images/sli1.jpg' %}"> 
+            <div class="caption center-align">
+                <h1 class="black-text"><b>iFacturacion</b></h1>
+                <h3 class="light black-text"><b>Tu software a medida.</b></h3>
+                <a class="waves-effect waves-light btn-large red darken-3">Comenzar ahora!</a>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/sli3.jpg' %}"> 
+            <div class="caption left-align">
+                <h1 class="black-text"><b>iFacturacion</b></h1>
+                <h3 class="light black-text"><b>Tu software a medida.</b></h3>
+                <a class="waves-effect waves-light btn-large red darken-3">Comenzar ahora!</a>
+            </div>
+            <div class="caption right-align">
+                        <div class="card-panel grey lighten-2 " style="width:600px">
+                                <h2 class="center-align" style="color:#3498db">Dejanos Contactarte</h2>
+                                <div class="row">
+                                    <form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">account_box</i>
+                                                <input id="icon_telephone" type="tel" class="validate">
+                                                <label for="icon_telephone">RUC</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">phone</i>
+                                                <input id="icon_telephone" type="tel" class="validate">
+                                                <label for="icon_telephone">Telefono</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">mail</i>
+                                                <input id="email" type="email" class="validate">
+                                                <label for="email">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6 l6">
+                                                <h5 class="center-align"><a class="modal-action modal-close waves-effect waves-light btn red darken-3">Cancelar</a></h5>
+                                            </div>
+                                            <div class="input-field col s12 m6 l6">
+                                                <h5 class="center-align"><a class="waves-effect waves-light btn green">Contactenme!</a></h5>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/sli2.jpg' %}"> 
+            <div class="caption right-align">
+                <h1 class="black-text"><b>iFacturacion</b></h1>
+                <h3 class="light black-text"><b>Tu software a medida.</b></h3>
+                <a class="waves-effect waves-light btn-large red darken-3">Comenzar ahora!</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="section grey lighten-1">
+        <h1 class="black-text center-align">Nosotros</h1>
+        <div class="container red">
+            <hr class="">
+        </div>
+    <div class="row container">
+            
+        <div class="col s12 m6 l6 hide-on-small-only">
+            <h5 class="center-align"><img src="{% static 'images/logo.png' %}" alt="logo"></h5>
+            
+        </div>
+        <div class="col s12 m6 l6" >
+            <p class="black-text">La facturación electrónica se ha convertido en una pieza clave en la modernización de la actividad empresarial, razón por la cual debes contemplarla hoy como la mejor práctica en el logro de eficiencias de tu negocio.    
+            Mediante la facturación electrónica tendrás la oportunidad de estar en una red de negocios, en donde todas las empresas podrán intercambiar documentos comerciales de manera electrónica. Ello les permitirá lograr mayor eficiencia en sus procesos logísticos y contables, ahorrar costos de almacenamiento, minimizar el riesgo de facturas erradas y ayudar en la protección del medio ambiente, y como valor agregado, tener acceso a mejores productos financieros, a través del factoring electrónico.</p>
+        </div> 
+        <h5 class="right-align"><a class="waves-effect waves-light btn white red-text text-darken-3">Ver mas</a></h5>
+    </div>
+    
+</div>
+<div class="parallax-container" style="height:350px">
+    <div class="parallax"><img src="{% static 'images/sli1.jpg' %}"></div>
+</div>
+<div class="section red darken-3">
+        <h1 class="grey-text text-lighten-1 center-align">Servicios</h1>
+        <div class="container">
+            <hr>
+        </div>
+        <div class="row container">
+                
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'images/sli3.jpg' %}">
+                        </div>
+                        <div class="card-content grey lighten-1">
+                            <span class="card-title activator grey-text text-darken-4">Servicio 1</span>
+                            <p><a href="#">Servicio 1</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l4 hide-on-small-only">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'images/sli3.jpg' %}">
+                        </div>
+                        <div class="card-content grey lighten-1">
+                            <span class="card-title activator grey-text text-darken-4">Servicio 2</span>
+                            <p><a href="#">Servicio 2</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l4 hide-on-med-and-down">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{% static 'images/sli3.jpg' %}">
+                        </div>
+                        <div class="card-content grey lighten-1">
+                            <span class="card-title activator grey-text text-darken-4">Servicio 2</span>
+                            <p><a href="#">Servicio 2</a></p>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="right-align"><a class="waves-effect waves-light btn white red-text text-darken-3">Ver mas</a></h5>
+            </div>
+    </div>
+    <div class="parallax-container" style="height:350px">
+            <div class="parallax"><img src="{% static 'images/sli2.jpg' %}"></div>
+        </div>
+        <div class="section grey lighten-1">
+                <h1 class="black-text center-align">Social Media</h1>
+                <div class="container red">
+                    <hr class="">
+                </div>
+            <div class="row container">
+                    
+                <h5 class="center-align grey-text text-lighten-1"><i class="fab fa-facebook-square" style="font-size:75;color:#3b5998"></i>___<i class="fab fa-twitter" style="font-size:75;color:#1dcaff
+                    "> </i>___<i class="fab fa-instagram" style="font-size:75;color:#cd486b"></i>___<i class="fab fa-whatsapp" style="font-size:75;color:#128c7e"></i></h5>
+            </div>
+        </div>
+        <div class="parallax-container" style="height:350px">
+                <div class="parallax"><img src="{% static 'images/sli3.jpg' %}"></div>
+            </div>
+{% endblock %}
+
+{% block extrajs %}
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script>
+    $(document).ready(function(){
+      $('.slider').slider({
+        indicators: false,
+        height: 700,
+        interval: 3000,
+    });
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+});
+</script>
+{% endblock %}
