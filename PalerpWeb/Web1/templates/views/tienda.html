@@ -5,6 +5,11 @@
 Productos
 {% endblock %}
 
+{% block extraMeta %}
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+{% endblock %}
+
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -21,42 +26,44 @@ Productos
 
 	  	</div>
   	</div>
-		<div class="col s12 m8 l9 hide" id="producto">
-			<div class="row">
-				<div class="col s6">
-					<h5 class="left-align"><a class="waves-effect waves-light btn red darken-3" id="btnVolverTienda1"><i class="material-icons white-text">arrow_back</i> Volver</a></h5>
-				</div>
-				<div class="col s6" id="divBtnAgregar2">
-					<h5 class="right-align"><a class="waves-effect waves-light btn red darken-3"><i class="material-icons white-text">shopping_cart</i> Agregar</a></h5>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col l4">
+		<div id="modal1" class="modal modal-fixed-footer">
+    	<div class="modal-content ">
 
-				</div>
-				<div class="col l8">
-					<h3 id="nombreProducto"></h3>
-					<p>Codigo: <span id="codigoProducto"></span></p>
-					<p>MiniCodigo: <span id="miniCodigoProducto"></span></p>
-					<p>Codigo del Fabricante: <span id="codigoFabricanteProducto"></span></p>
-				</div>
-			</div>
-			<div class="row">
-				<h5>Caracteristicas: </h5>
-				<br>
-				<div class="" id = "tableContainer">
 
+					<div class="row">
+						<div class="col s4">
+							<img src="{% static 'images/img1.jpg' %}" alt="" height="200px" width="200px">
+						</div>
+						<div class="col s8">
+							<h3 id="nombreProducto"></h3>
+							<p>Codigo: <span id="codigoProducto"></span></p>
+							<p>MiniCodigo: <span id="miniCodigoProducto"></span></p>
+							<p>Codigo del Fabricante: <span id="codigoFabricanteProducto"></span></p>
+						</div>
+					</div>
+					<div class="row">
+						<h5>Caracteristicas: </h5>
+						<br>
+						<div class="" id = "tableContainer">
+
+						</div>
+					</div>
+					<br>
+					</div>
+				<div class="modal-footer" style="height:100px;">
+					<div class="container">
+						<div class="row">
+							<div class="col s6">
+								<h5 class="left-align"><a class="waves-effect waves-light btn red darken-3" id="btnVolverTienda2"><i class="material-icons white-text">arrow_back</i> Volver</a></h5>
+							</div>
+							<div class="col s6" id="divBtnAgregar3">
+								<h5 class="right-align"><a class="waves-effect waves-light btn red darken-3"><i class="material-icons white-text">shopping_cart</i> Agregar</a></h5>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col s6">
-					<h5 class="left-align"><a class="waves-effect waves-light btn red darken-3" id="btnVolverTienda2"><i class="material-icons white-text">arrow_back</i> Volver</a></h5>
-				</div>
-				<div class="col s6" id="divBtnAgregar3">
-					<h5 class="right-align"><a class="waves-effect waves-light btn red darken-3"><i class="material-icons white-text">shopping_cart</i> Agregar</a></h5>
-				</div>
-			</div>
-			<br>
+
+
 		</div >
 
   	<div class="col hide-on-small-only m4 l3">
@@ -93,9 +100,15 @@ Productos
 
 {% block extrajs %}
 <script type="text/javascript">
+	$(document).ready(function(){
+
+			$('.modal').modal();
+	});
+
 	$(document).ready(function() {
     Materialize.updateTextFields();
   });
+
 	var categoriaRender = "";
 	var val = true
 
@@ -185,6 +198,7 @@ Productos
 			var a1 = document.createElement('a')
 			a1.classList.add('secondary-content')
 			a1.id = "closeItem"+producto['categoria']+producto['nombre']
+			a1.style.cursor = 'pointer'
 			a1.addEventListener("click", delItemCarrito)
 
 			var i3 = document.createElement('i')
@@ -213,15 +227,11 @@ Productos
 	}
 
 	function volverTienda(ev){
-		var divTienda = document.getElementById('tienda')
-		divTienda.classList.remove('hide')
-		var divProducto = document.getElementById('producto')
-		divProducto.classList.add('hide')
+		$('#modal1').modal('close');
 	}
 
-	var btnVolverTienda = document.getElementById('btnVolverTienda1')
+
 	var btnVolverTienda = document.getElementById('btnVolverTienda2')
-	btnVolverTienda1.addEventListener('click', volverTienda)
 	btnVolverTienda2.addEventListener('click', volverTienda)
 
 	//funcionalidad para al momento de cambiar la cantidad de un producto
@@ -318,6 +328,7 @@ Productos
 
 			a1.classList.add('activator')
 			a1.innerText = 'leer mas'
+			a1.style.cursor = 'pointer'
 
 			p2.appendChild(a1)
 
@@ -399,12 +410,8 @@ Productos
 		var id = this.id.substring(11)
 		var closeCard = document.getElementById("closeCard" + id)
 		closeCard.click()
-		var divTienda = document.getElementById('tienda')
-		divTienda.classList.add('hide')
-		var divProducto = document.getElementById('producto')
-		divProducto.classList.remove('hide')
 
-
+		$('#modal1').modal('open');
 
 		var producto = productos[id]
 
@@ -418,7 +425,7 @@ Productos
 		document.getElementById('miniCodigoProducto').innerText = producto['minicodigo']
 		document.getElementById('codigoFabricanteProducto').innerText = producto['codigofabricante']
 
-		var divBtnAgregar2 = document.getElementById('divBtnAgregar2')
+
 		var divBtnAgregar3 = document.getElementById('divBtnAgregar3')
 
 		var h51 = document.createElement('h5')
@@ -455,10 +462,10 @@ Productos
 
 		h52.appendChild(a2)
 
-		divBtnAgregar2.innerText = ""
+
 		divBtnAgregar3.innerText = ""
 
-		divBtnAgregar2.appendChild(h51)
+
 		divBtnAgregar3.appendChild(h52)
 
 
@@ -604,6 +611,7 @@ Productos
 
   //funcion asicrona para hacer ciertas acciones
   setTimeout(function(){
+
 		//agregamos todos los productos en cards
 		appendCards()
   	//llamamos a la funcion para se agreguen los botones y los titulos
