@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from apps.productos.views import tienda_view,prueba
+from apps.productos.views import tienda_view, prueba
+from apps.general.views import index_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tienda/$', tienda_view, name = 'tienda'),
+    url(r'^$', index_view, name = 'index'),
     url(r'^test/', prueba, name = 'prueba'),
 ]

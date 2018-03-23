@@ -221,17 +221,7 @@ Productos
 				tr.appendChild(tdVrUnitario)
 				tr.appendChild(tdVrTotal)
 
-				var row = `<div><tr>
-											<td>`+ item +`</td>
-											<td>`+ pro['nombre'] +`</td>
-											<td>`+ pro['cantidad'] +`</td>
-											<td>`+ "S/. " + parseFloat(pro['precio']).toFixed(2) +`</td>
-											<td>`+ "S/. " + parseFloat(parseFloat(pro['precio']) * parseFloat(pro['cantidad'])).toFixed(2) +`</td>
-										</tr></div>`
-
-				//console.log()
-				$(row).appendTo(tbodyResumenCompra)
-				//tbodyResumenCompra.appendChild(stringToHTML(row))
+				tbodyResumenCompra.appendChild(tr)
 				item++
 			}
 			var tr = document.createElement('tr')

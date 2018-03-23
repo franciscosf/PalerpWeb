@@ -23,16 +23,16 @@
               <a href="#!" class="brand-logo white-text"><i class="material-icons" style="font-size:30px">library_books</i> Palerp</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
-                  <li><a class="white-text" href="">Inicio</a></li>
-                  <li><a class="white-text" href="">Nosotros</a></li>
-                  <li><a class="white-text" href="">Tienda</a></li>
-                  <li><a class="white-text" href="">Contactanos</a></li>
+                  <li><a class="white-text" href="{% url 'index' %}">Inicio</a></li>
+                  <li><a class="white-text" href="{% url 'index' %}">Nosotros</a></li>
+                  <li><a class="white-text" href="{% url 'tienda' %}">Tienda</a></li>
+                  <li><a class="white-text" href="{% url 'index' %}">Contactanos</a></li>
               </ul>
               <ul class="sidenav" id="mobile-demo">
-                  <li><a class="white-text" href="">Inicio</a></li>
-                  <li><a class="white-text" href="">Nosotros</a></li>
-                  <li><a class="white-text" href="">Tienda</a></li>
-                  <li><a class="white-text" href="">Contactanos</a></li>
+                  <li><a class="grey-text text-darken-3" href="{% url 'index' %}">Inicio</a></li>
+                  <li><a class="grey-text text-darken-3" href="{% url 'index' %}">Nosotros</a></li>
+                  <li><a class="grey-text text-darken-3" href="{% url 'tienda' %}">Tienda</a></li>
+                  <li><a class="grey-text text-darken-3" href="{% url 'index' %}">Contactanos</a></li>
               </ul>
           </div>
       </div>
