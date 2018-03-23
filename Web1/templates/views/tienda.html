@@ -85,7 +85,7 @@ Productos
 		              	<li>Total<i class="right" id="totalCarrito">S/. 0.00</i></li>
 		            </div>
 		          </div>
-			          <h5 class=""><a class="waves-effect left waves-light btn white red-text text-darken-3"><i class="material-icons">delete</i><span class="hide-on-med-and-down"> Vaciar</span></a></h5>
+			          <h5 class=""><a class="waves-effect left waves-light btn white red-text text-darken-3" id="btnVaciarCarrito"><i class="material-icons">delete</i><span class="hide-on-med-and-down"> Vaciar</span></a></h5>
 			          <h5 class=""><a class="waves-effect right waves-light btn white red-text text-darken-3" id="btnVerCotizacion"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down"> Comprar</span></a></h5>
 			        </div>
 			      </div>
@@ -331,12 +331,7 @@ Productos
 		$('#modal1').modal('close');
 	}
 
-	var btnVerCotizacion = document.getElementById('btnVerCotizacion')
-	btnVerCotizacion.addEventListener('click', VerCotizacion)
-	var btnVolverTiendaCotizacion = document.getElementById('btnVolverTiendaCotizacion')
-	btnVolverTiendaCotizacion.addEventListener('click', VolverCotizacion)
-	var btnVolverTienda = document.getElementById('btnVolverTienda2')
-	btnVolverTienda2.addEventListener('click', volverTienda)
+
 
 	//funcionalidad para al momento de cambiar la cantidad de un producto
 	function aumentarCantidad(){
@@ -709,12 +704,26 @@ Productos
     return table
   }
 
+	//funcion para vaciar todos los elementos del Carrito
+	function vaciarCarrito(ev){
+		document.getElementById('carrito').innerText = ""
+		document.getElementById('totalCarrito').innerText = "S/. 0.00"
+		productosEnCarrito = {}
+	}
+
 
 
 
   //funcion asicrona para hacer ciertas acciones
   setTimeout(function(){
-
+		var btnVerCotizacion = document.getElementById('btnVerCotizacion')
+		btnVerCotizacion.addEventListener('click', VerCotizacion)
+		var btnVolverTiendaCotizacion = document.getElementById('btnVolverTiendaCotizacion')
+		btnVolverTiendaCotizacion.addEventListener('click', VolverCotizacion)
+		var btnVolverTienda = document.getElementById('btnVolverTienda2')
+		btnVolverTienda2.addEventListener('click', volverTienda)
+		var btnVaciarCarrito = document.getElementById('btnVaciarCarrito')
+		btnVaciarCarrito.addEventListener('click', vaciarCarrito)
 		//agregamos todos los productos en cards
 		appendCards()
   	//llamamos a la funcion para se agreguen los botones y los titulos
