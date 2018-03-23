@@ -4,7 +4,10 @@
 
 {% block content %}
 <br>
-<div class="container" id = "tableContainer">
+<div class="container hide" id = "tableContainer">
+
+</div>
+<div class="container" id="c">
 
 </div>
 <br>
@@ -86,6 +89,22 @@
   var a = toTable(cadena)
   console.log(a)
   document.getElementById('tableContainer').appendChild(a)
+
+var le = 'Holas'
+  var c = document.getElementById('c')
+  var str =   `<div class='row'>
+                  <h1>`+ le+
+                  `</h1>
+              </div>`
+  var html = $.parseHTML(str)
+  function createElementFromHTML(htmlString) {
+  var div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+
+  // Change this to div.childNodes to support multiple top-level nodes
+  return div.firstChild;
+}
+console.log(createElementFromHTML(str))
 
   </script>
 {% endblock %}

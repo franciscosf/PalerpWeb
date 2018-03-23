@@ -12,8 +12,8 @@ Productos
 
 {% block content %}
 <div class="container">
-	<div class="row">
-		<div class="col s12 m8 l9 " id="tienda">
+	<div class="row" id="tienda" style="min-height: 620px;">
+		<div class="col s12 m8 l9 ">
 			<h1 class="black-text center-align "><i class="material-icons medium">store</i> Tienda</h1>
 			<hr>
 			<div class="row" id="categorias">
@@ -28,28 +28,26 @@ Productos
   	</div>
 		<div id="modal1" class="modal modal-fixed-footer">
     	<div class="modal-content ">
-
-
-					<div class="row">
-						<div class="col s4">
-							<img src="{% static 'images/img1.jpg' %}" alt="" height="200px" width="200px">
-						</div>
-						<div class="col s8">
-							<h3 id="nombreProducto"></h3>
-							<p>Codigo: <span id="codigoProducto"></span></p>
-							<p>MiniCodigo: <span id="miniCodigoProducto"></span></p>
-							<p>Codigo del Fabricante: <span id="codigoFabricanteProducto"></span></p>
-						</div>
+				<div class="row">
+					<div class="col s4">
+						<img src="{% static 'images/img1.jpg' %}" alt="" height="200px" width="200px">
 					</div>
-					<div class="row">
-						<h5>Caracteristicas: </h5>
-						<br>
-						<div class="" id = "tableContainer">
-
-						</div>
+					<div class="col s8">
+						<h3 id="nombreProducto"></h3>
+						<p>Codigo: <span id="codigoProducto"></span></p>
+						<p>MiniCodigo: <span id="miniCodigoProducto"></span></p>
+						<p>Codigo del Fabricante: <span id="codigoFabricanteProducto"></span></p>
 					</div>
+				</div>
+				<div class="row">
+					<h5>Caracteristicas: </h5>
 					<br>
+					<div class="" id = "tableContainer">
+
 					</div>
+				</div>
+				<br>
+			</div>
 				<div class="modal-footer" style="height:100px;">
 					<div class="container">
 						<div class="row">
@@ -84,31 +82,65 @@ Productos
 								 	</div>
 		            </div>
 		            <div class="card-action">
-		              	<li>Total<i class="right" id="totalCarrito">S/.0.00</i></li>
+		              	<li>Total<i class="right" id="totalCarrito">S/. 0.00</i></li>
 		            </div>
 		          </div>
-			          <h5 class=""><a class="waves-effect left waves-light btn white red-text text-darken-3"><i class="material-icons">delete</i><span class="hide-on-med-and-down">Cancelar</span></a></h5>
-			          <h5 class=""><a class="waves-effect right waves-light btn white red-text text-darken-3"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down">Comprar</span></a></h5>
+			          <h5 class=""><a class="waves-effect left waves-light btn white red-text text-darken-3"><i class="material-icons">delete</i><span class="hide-on-med-and-down"> Vaciar</span></a></h5>
+			          <h5 class=""><a class="waves-effect right waves-light btn white red-text text-darken-3" id="btnVerCotizacion"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down"> Comprar</span></a></h5>
 			        </div>
 			      </div>
 		  		</div>
 	  		</div>
 	  	</div>
   	</div>
+		<div class="row hide" id="cotizacion" style="min-height: 620px;">
+			<div class="col s12">
+				<h5 class="center-align"><a class="waves-effect left waves-light btn-large white-text red darken-3" id="btnVolverTiendaCotizacion"><i class="material-icons">store</i><span class="hide-on-med-and-down"> Tienda</span></a></h5>
+				<h2 class="black-text center-align">Resumen de Compra</h2>
+				<hr>
+			 	<h5 class="center-align">Este es el detalle de su compra, revise que todos los items sean los que usted ha seleccionado, si usted esta conforme con la compra presione el boton COMPRAR que esta en la parte final de la tabla, en caso de querer modificar algun item presione el boton TIENDA que se encuentra en la parte superior.</h5>
+				<hr>
+				<br>
+				<table class="highlight">
+		      <thead class="left-align">
+		        <tr>
+							<th>Item</th>
+	            <th>Nombre</th>
+	            <th>Cantidad</th>
+							<th>Vr. Unitario</th>
+							<th>Vr. Total</th>
+		        </tr>
+		      </thead>
+					<tbody id="tbodyResumenCompra">
+
+					</tbody>
+      	</table>
+				<br>
+				<h5 class=""><a class="waves-effect right waves-light btn-large white-text red darken-3" id="btnVerCotizacion"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down"> Comprar</span></a></h5>
+
+		  	</div>
+	  	</div>
+		</div>
 </div>
 {% endblock %}
 
 {% block extrajs %}
 <script type="text/javascript">
+	//inicialimos el modal
 	$(document).ready(function(){
-
 			$('.modal').modal();
 	});
 
-	$(document).ready(function() {
-    Materialize.updateTextFields();
-  });
+	//function par convertir un string a html element
+	function stringToHTML(htmlString) {
+	  var div = document.createElement('div');
+	  div.innerHTML = htmlString.trim();
 
+	  // Change this to div.childNodes to support multiple top-level nodes
+	  return div.firstChild;
+	}
+
+	//variable categoria para renderizar
 	var categoriaRender = "";
 	var val = true
 
@@ -143,8 +175,87 @@ Productos
 	//creamos un diccionario donde tendremos los productos que estan en el carrito
 	var productosEnCarrito = {}
 
+	function VolverCotizacion(ev){
+		var tienda = document.getElementById('tienda')
+		var cotizacion = document.getElementById('cotizacion')
+
+		tienda.classList.remove('hide')
+		cotizacion.classList.add('hide')
+
+		document.getElementById('tbodyResumenCompra').innerText = ""
+	}
+
+	function VerCotizacion(ev){
+		if(Object.keys(productosEnCarrito).length === 0){
+			M.toast({html: 'El carrito esta vacio', classes: 'rounded'});
+
+		}else{
+
+			var tienda = document.getElementById('tienda')
+			var cotizacion = document.getElementById('cotizacion')
+
+			tienda.classList.add('hide')
+			cotizacion.classList.remove('hide')
+
+			var tbodyResumenCompra = document.getElementById('tbodyResumenCompra')
+			var item = 1
+			for (var namePro in productosEnCarrito){
+
+				var tr = document.createElement('tr')
+				var tdItem = document.createElement('td')
+				var tdNombre = document.createElement('td')
+				var tdCantidad = document.createElement('td')
+				var tdVrUnitario = document.createElement('td')
+				var tdVrTotal = document.createElement('td')
+
+				var pro = productosEnCarrito[namePro]
+				tdItem.innerText = item
+				tdNombre.innerText = pro['nombre']
+				tdCantidad.innerText = pro['cantidad']
+				tdVrUnitario.innerText = "S/. " + parseFloat(pro['precio']).toFixed(2)
+				tdVrTotal.innerText = "S/. " + parseFloat(parseFloat(pro['precio']) * parseFloat(pro['cantidad'])).toFixed(2)
+
+				tr.appendChild(tdItem)
+				tr.appendChild(tdNombre)
+				tr.appendChild(tdCantidad)
+				tr.appendChild(tdVrUnitario)
+				tr.appendChild(tdVrTotal)
+
+				var row = `<div><tr>
+											<td>`+ item +`</td>
+											<td>`+ pro['nombre'] +`</td>
+											<td>`+ pro['cantidad'] +`</td>
+											<td>`+ "S/. " + parseFloat(pro['precio']).toFixed(2) +`</td>
+											<td>`+ "S/. " + parseFloat(parseFloat(pro['precio']) * parseFloat(pro['cantidad'])).toFixed(2) +`</td>
+										</tr></div>`
+
+				//console.log()
+				$(row).appendTo(tbodyResumenCompra)
+				//tbodyResumenCompra.appendChild(stringToHTML(row))
+				item++
+			}
+			var tr = document.createElement('tr')
+			var tdItem = document.createElement('td')
+			var tdNombre = document.createElement('td')
+			var tdCantidad = document.createElement('td')
+			var tdVrUnitario = document.createElement('td')
+			var tdVrTotal = document.createElement('td')
+			tdVrUnitario.innerText = 'Total'
+			tdVrTotal.innerText = document.getElementById('totalCarrito').innerText
+
+			tr.appendChild(tdItem)
+			tr.appendChild(tdNombre)
+			tr.appendChild(tdCantidad)
+			tr.appendChild(tdVrUnitario)
+			tr.appendChild(tdVrTotal)
+
+			tbodyResumenCompra.appendChild(tr)
+
+		}
+	}
+
 	//funcionalidad para agregar un prducto al carrito
-	function btnShopOnclick(ev){
+	function ShopOnclick(ev){
 		var producto = productos[this.id.substring(8)]
 		var id = "itemCarrito"+producto['categoria']+producto['nombre']
 
@@ -189,7 +300,7 @@ Productos
 
 			var i2 = document.createElement('i')
 			i2.id = "subTotal"+producto['categoria']+producto['nombre']
-			i2.innerText = "S/."+producto['precio']
+			i2.innerText = "S/. "+producto['precio']
 
 			p1.appendChild(div1)
 			p1.append("SubTotal: ")
@@ -230,7 +341,10 @@ Productos
 		$('#modal1').modal('close');
 	}
 
-
+	var btnVerCotizacion = document.getElementById('btnVerCotizacion')
+	btnVerCotizacion.addEventListener('click', VerCotizacion)
+	var btnVolverTiendaCotizacion = document.getElementById('btnVolverTiendaCotizacion')
+	btnVolverTiendaCotizacion.addEventListener('click', VolverCotizacion)
 	var btnVolverTienda = document.getElementById('btnVolverTienda2')
 	btnVolverTienda2.addEventListener('click', volverTienda)
 
@@ -238,7 +352,6 @@ Productos
 	function aumentarCantidad(){
 		var id = this.id.substring(8)
 
-		console.log(this.value)
 		if(!isNaN(parseInt(this.value))){
 			var nuevaCantidad = parseInt(this.value)
 			var producto = productosEnCarrito[id]
@@ -250,11 +363,11 @@ Productos
 
 			var subTotalTag = document.getElementById("subTotal" + id)
 			productosEnCarrito[id]['cantidad'] = nuevaCantidad
-			subTotalTag.innerText = (parseFloat(nPrecio).toFixed(2)).toString()
+			subTotalTag.innerText = "S/. " + (parseFloat(nPrecio).toFixed(2)).toString()
 
 			actualizarTotal(Math.abs(nPrecio - aPrecio), nPrecio > aPrecio)
 
-			console.log(productosEnCarrito[id]['cantidad'])
+
 		}
 		else{
 			this.value = 1
@@ -271,7 +384,7 @@ Productos
 			}else{
 				var totFinal = parseFloat(totActual - cantidad).toFixed(2)
 			}
-			totCarritoTag.innerText = "S/."+totFinal.toString()
+			totCarritoTag.innerText = "S/. "+totFinal.toString()
 	}
 
 	//funcionalidad para eliminar un item del carrito de compras
@@ -333,7 +446,7 @@ Productos
 			p2.appendChild(a1)
 
 			var h51 = document.createElement('h5')
-			h51.innerText = "S/."+(parseFloat(producto['precio']).toFixed(2)).toString()
+			h51.innerText = "S/. "+(parseFloat(producto['precio']).toFixed(2)).toString()
 
 			var h52 = document.createElement('h5')
 			h52.classList.add('right-align')
@@ -341,7 +454,7 @@ Productos
 			var a2 = document.createElement('a')
 			a2.classList.add('waves-effect', 'waves-light', 'btn', 'red', 'darken-3')
 			a2.id = "btnShop1" + producto['categoria'] + producto['nombre']
-			a2.addEventListener('click', btnShopOnclick)
+			a2.addEventListener('click', ShopOnclick)
 
 			var i1 = document.createElement('i')
 			i1.classList.add('material-icons')
@@ -434,7 +547,7 @@ Productos
 		var a1 = document.createElement('a')
 		a1.classList.add('waves-effect', 'waves-light', 'btn', 'red', 'darken-3')
 		a1.id = "btnShop2"+id
-		a1.addEventListener('click', btnShopOnclick)
+		a1.addEventListener('click', ShopOnclick)
 
 		var i1 = document.createElement('i')
 		i1.classList.add('material-icons', 'white-text')
@@ -451,7 +564,7 @@ Productos
 		var a2 = document.createElement('a')
 		a2.classList.add('waves-effect', 'waves-light', 'btn', 'red', 'darken-3')
 		a2.id = "btnShop3"+id
-		a2.addEventListener('click', btnShopOnclick)
+		a2.addEventListener('click', ShopOnclick)
 
 		var i2 = document.createElement('i')
 		i2.classList.add('material-icons', 'white-text')
