@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-Productos
+Tienda
 {% endblock %}
 
 {% block extraMeta %}
@@ -13,7 +13,7 @@ Productos
 {% block content %}
 <div class="container">
 	<div class="row" id="tienda" style="min-height: 620px;">
-		<div class="col s12 m8 l9 ">
+		<div class="col s12 m12 l9 ">
 			<h1 class="black-text center-align "><i class="material-icons medium">store</i> Tienda</h1>
 			<hr>
 			<div class="row" id="categorias">
@@ -30,7 +30,7 @@ Productos
     	<div class="modal-content ">
 				<div class="row">
 					<div class="col s4">
-						<img src="{% static 'images/img1.jpg' %}" alt="" height="200px" width="200px">
+						<img class="materialboxed" src="{% static 'images/noimagen.png' %}" alt="" height="200px" width="200px">
 					</div>
 					<div class="col s8">
 						<h3 id="nombreProducto"></h3>
@@ -60,15 +60,13 @@ Productos
 						</div>
 					</div>
 				</div>
-
-
 		</div >
 
-  	<div class="col hide-on-small-only m4 l3">
-  		<div class="toc-wrapper pinned" style="top: 100px">
+  	<div class="col m4 l3 hide-on-small-only">
+  		<div class="toc-wrapper pinned" style="top: 100px;z-index: 100">
 	  		<div class="container">
 	  			<div class="row">
-		        <div class="col m12 l12">
+		        <div class="col s12 m12 l12">
 		          <div class="card hoverable white" >
 		            <div class="card-content black-text">
 		              <h5 class="card-title"><strong><i class="material-icons medium">shopping_cart</i>Carrito de Compras</strong></h5>
@@ -130,6 +128,9 @@ Productos
 	$(document).ready(function(){
 			$('.modal').modal();
 	});
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
 
 	//function par convertir un string a html element
 	function stringToHTML(htmlString) {
@@ -331,8 +332,6 @@ Productos
 		$('#modal1').modal('close');
 	}
 
-
-
 	//funcionalidad para al momento de cambiar la cantidad de un producto
 	function aumentarCantidad(){
 		var id = this.id.substring(8)
@@ -403,8 +402,9 @@ Productos
 			//div3.style.height = '300px'
 
 			var img1 = document.createElement('img')
-			img1.classList.add('activator')
-			img1.src = "{% static 'images/img1.jpg' %}"
+			img1.classList.add('materialboxed')
+      img1.height = '220'
+			img1.src = "{% static 'images/noimagen.png' %}"
 
 
 			div3.appendChild(img1)

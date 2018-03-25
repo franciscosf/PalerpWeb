@@ -17,11 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from apps.productos.views import tienda_view, prueba
-from apps.general.views import index_view
+from apps.general.views import index_view, nosotros_view, contactanos_view, productos_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tienda/$', tienda_view, name = 'tienda'),
     url(r'^$', index_view, name = 'index'),
+    url(r'^nosotros/$', nosotros_view, name = 'nosotros'),
+    url(r'^productos/$', productos_view, name = 'productos'),
+    url(r'^contactanos/$', contactanos_view, name = 'contactanos'),
     url(r'^test/', prueba, name = 'prueba'),
 ]
