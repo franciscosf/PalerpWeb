@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect
 
 from apps.general.forms import PosibleClienteForm
@@ -6,16 +6,11 @@ from apps.general.forms import PosibleClienteForm
 # Create your views here.
 
 def index_view(request):
-    print('Hi')
     if request.method == 'POST':
         form = PosibleClienteForm(request.POST)
-        print('POST')
-        print(form)
         if form.is_valid():
-            # <process form cleaned data>
-            print('Valid')
-            return HttpResponseRedirect('/success/')
-    # if a GET (or any other method) we'll create a blank form
+            form.save()
+            return redirect('tienda')
     else:
         form = PosibleClienteForm()
 

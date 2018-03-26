@@ -1,7 +1,29 @@
 from django import forms
 
-class PosibleClienteForm(forms.Form):
-    RUC = forms.CharField(label = 'RUC', max_length = 12)
-    nombre = forms.CharField(max_length = 100)
-    email = forms.CharField(max_length = 150)
-    telefono = forms.CharField(max_length = 15)
+from apps.general.models import PosibleCliente
+
+class PosibleClienteForm(forms.ModelForm):
+
+    class Meta:
+        model = PosibleCliente
+
+        fields = [
+            'RUC',
+            'nombre',
+            'email',
+            'telefono',
+        ]
+
+        labels = {
+            'RUC' : 'RUC',
+            'nombre' : 'Nombre',
+            'email' : 'Email',
+            'telefono' : 'Telefono',
+        }
+
+        widgets = {
+            'RUC' : forms.TextInput(attrs={'class':'validate','type':'tel'}),
+            'nombre' : forms.TextInput(attrs={'class':'validate','type':'text'}),
+            'email' : forms.TextInput(attrs={'class':'validate','type':'email'}),
+            'telefono' : forms.TextInput(attrs={'class':'validate','type':'tel'}),            
+        }
