@@ -17,13 +17,17 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from apps.productos.views import tienda_view, prueba
-from apps.general.views import index_view, nosotros_view, contactanos_view, productos_view
+from apps.general.views import index_view, nosotros_view, contactanos_view, productos_view, post_contactanos_view
+from apps.user.views import signup_view, activate, login_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tienda/$', tienda_view, name = 'tienda'),
     url(r'^$', index_view, name = 'index'),
     url(r'^nosotros/$', nosotros_view, name = 'nosotros'),
+    url(r'^signup/$', signup_view, name='signup'),
+    url(r'^login/$', login_view, name='login'),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', activate, name='activate'),
     url(r'^productos/$', productos_view, name = 'productos'),
     url(r'^contactanos/$', contactanos_view, name = 'contactanos'),
     url(r'^test/', prueba, name = 'prueba'),

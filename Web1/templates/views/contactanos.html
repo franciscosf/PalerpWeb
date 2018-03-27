@@ -35,30 +35,39 @@
               <h5 class="card-title center-align" style="font-size:40px"><strong>Dejanos contactarte</strong></h5>
               <div class="row">
 
-                <form class="col s12">
+                <form class="col s12" method="post" action="{% url 'index' %}">
+                  {% csrf_token %}
+                  {{ form.non_field_errors }}
                   <div class="row">
                     <div class="input-field col s12">
+                      {{ form.RUC.errors }}
                       <i class="material-icons prefix">account_box</i>
-                      <label for="contatar_RUC">RUC</label>
-                      <input id="contatar_RUC" type="tel" class="validate">
+                      {{ form.RUC }}
+                      <label for="{{ form.RUC.id_for_label }}">RUC</label>
                     </div>
                     <div class="input-field col s12">
+                      {{ form.nombre.errors }}
                       <i class="material-icons prefix">account_circle</i>
-                      <input id="contactar_Nombre" type="text" class="validate">
-                      <label for="contactar_Nombre">Nombres y Apellidos</label>
+                      {{ form.nombre }}
+                      <label for="{{ form.nombre.id_for_label }}">Nombres y Apellidos</label>
                     </div>
                     <div class="input-field col s12">
+                      {{ form.email.errors }}
                       <i class="material-icons prefix">mail</i>
-                      <input id="contactar_Email" type="email" class="validate">
-                      <label for="contactar_Email">Email</label>
+                      {{ form.email }}
+                      <label for="{{ form.email.if_for_label }}">Email</label>
                     </div>
                     <div class="input-field col s12">
+                      {{ form.telefono.errors }}
                       <i class="material-icons prefix">phone</i>
-                      <input id="contactar_telefono" type="tel" class="validate">
-                      <label for="contactar_telefono">Telefono</label>
+                      {{ form.telefono }}
+                      <label for="{{ form.telefono.id_for_label }}">Telefono</label>
                     </div>
-                    <h5 class="right-align"><a class="waves-effect waves-light btn green">Contactenme!</a></h5>
+
                   </div>
+                  <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action">Contactenme!
+                    <i class="material-icons right">send</i>
+                  </button>
                 </form>
 
               </div>
