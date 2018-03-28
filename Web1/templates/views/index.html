@@ -10,21 +10,21 @@ Palerp
 <div class="slider">
   <ul class="slides">
     <li>
-      <img src="{% static 'images/sli11.jpg' %}">
+      <img src="{% static 'images/sli11.jpg' %}" alt="sliderImage1">
       <div class="caption left-align">
         <h3 class="white-text"><b>Palerp</b></h3>
         <h5 class="light white-text"><b>Dedicados al desarrollo de software</b></h5>
       </div>
     </li>
     <li>
-      <img src="{% static 'images/sli31.jpg' %}">
+      <img src="{% static 'images/sli31.jpg' %}" alt="sliderImage2">
       <div class="caption left-align">
         <h3 class="white-text"><b>iFacturacion</b></h3>
         <h5 class="light white-text"><b>Tu software a medida.</b></h5>
       </div>
     </li>
     <li>
-      <img src="{% static 'images/sli21.jpg' %}">
+      <img src="{% static 'images/sli21.jpg' %}" alt="sliderImage3">
       <div class="caption left-align">
         <h3 class="white-text"><b>PideloApp</b></h3>
         <h5 class="light white-text"><b>Disfruta del tiempo.</b></h5>
@@ -153,7 +153,7 @@ Palerp
       Mediante la facturación electrónica tendrás la oportunidad de estar en una red de negocios, en donde todas las empresas podrán intercambiar documentos comerciales de manera electrónica. Ello les permitirá lograr mayor eficiencia en sus procesos logísticos y contables, ahorrar costos de almacenamiento, minimizar el riesgo de facturas erradas y ayudar en la protección del medio ambiente, y como valor agregado, tener acceso a mejores productos financieros, a través del factoring electrónico.</p>
     </div>
     <div class="col m6 l4 hide-on-small-only">
-      <h5 class="center-align"><img src="{% static 'images/logo.png' %}" alt="logo"></h5>
+      <h5 class="center-align"><img src="{% static 'images/logo.png' %}" alt="logoPalerp"></h5>
     </div>
 
   </div>
@@ -163,7 +163,7 @@ Palerp
 </div>
 
 <div class="parallax-container"  style="height:400px">
-  <div class="parallax"><img src="{% static 'images/fp2.jpg'%}"></div>
+  <div class="parallax"><img src="{% static 'images/fp2.jpg'%}" alt="parallaxImage1" ></div>
 </div>
 
 <div class="section white">
@@ -181,7 +181,7 @@ Palerp
         <div class="col s12 m4 l6">
           <div class="card hoverable">
           <a href="#"><div class="card-image">
-              <img src="{% static 'images/facturacion-electronica.jpg' %}" height="300px">
+              <img src="{% static 'images/facturacion-electronica.jpg' %}" height="300px" alt="facturacion-electronicaImage">
               <span class="card-title">Facturación Electronica</span>
             </div>
             <div class="card-content">
@@ -192,7 +192,7 @@ Palerp
         <div class="col s12 m4 l6">
           <a href="#"><div class="card hoverable">
             <div class="card-image">
-              <img src="{% static 'images/software.jpg' %}" height="300px">
+              <img src="{% static 'images/software.jpg' %}" height="300px" alt="SoftwareImage">
               <span class="card-title">Software</span>
             </div>
             <div class="card-content">
@@ -203,7 +203,7 @@ Palerp
         <div class="col s12 m4 l6 hide-on-large-only">
           <a href="#"><div class="card hoverable">
             <div class="card-image">
-              <img src="{% static 'images/hardware.jpg' %}" height="300px">
+              <img src="{% static 'images/hardware.jpg' %}" height="300px" alt="HardwareImage1">
               <span class="card-title">Hardware</span>
             </div>
             <div class="card-content">
@@ -212,12 +212,12 @@ Palerp
           </div></a>
         </div>
       </div>
-      
+
       <div class="row hide-on-med-and-down">
         <div class="col s12 m4 l6 ">
           <a href="#"><div class="card hoverable">
             <div class="card-image">
-              <img src="{% static 'images/hardware.jpg' %}" height="300px">
+              <img src="{% static 'images/hardware.jpg' %}" height="300px" alt="HardwareImage2">
               <span class="card-title">Hardware</span>
             </div>
             <div class="card-content">
@@ -225,7 +225,7 @@ Palerp
             </div>
           </div></a>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -247,33 +247,20 @@ Palerp
   <div class="row container">
     <div class="col s12 m12 l9">
       <div class="row">
-        <div class="col s12 m4 l4">
-          <div class="card cyan lighten-4">
-            <div class="card-content black-text">
-              <span class="card-title">PideloApp</span>
-              <p>Una nueva aplicacion que permite el manejo de restaurantes tanto en el aspecto administrativo y funcional.</p>
-            </div>
-
-          </div>
-        </div>
-        <div class="col s12 m4 l4 ">
-          <div class="card cyan lighten-4">
-            <div class="card-content black-text">
-              <span class="card-title">iFacturacion Pagina Web</span>
-              <p>Desde ahora nuestro software de iFacturacion ya cuenta con su pagina web donde puedes concer mas de como trabajo nuestro software y mucho mas.</p>
-            </div>
-
-          </div>
-        </div>
-        <div class="col s12 m4 l4 hide-on-small-only">
-          <div class="card cyan lighten-4">
-            <div class="card-content black-text">
-              <span class="card-title">iFacturacion Sistema Web</span>
-              <p>Ahora nuestro software de iFacturacion contara con un sistema web desde donde tu como cliente podras facturar imprimir tus boletas y comprantes desde la web.</p>
-            </div>
-
-          </div>
-        </div>
+        <ul class="collapsible ">
+          <li>
+            <div class="collapsible-header"><i class="material-icons">library_books</i>PideloApp</div>
+            <div class="collapsible-body cyan lighten-4"><span>Una nueva aplicacion que permite el manejo de restaurantes tanto en el aspecto administrativo y funcional.</span></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">library_books</i>iFacturacion Pagina Web</div>
+            <div class="collapsible-body cyan lighten-4"><span>Desde ahora nuestro software de iFacturacion ya cuenta con su pagina web donde puedes concer mas de como trabajo nuestro software y mucho mas.</span></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">library_books</i>iFacturacion Sistema Web</div>
+            <div class="collapsible-body cyan lighten-4"><span>Ahora nuestro software de iFacturacion contara con un sistema web desde donde tu como cliente podras facturar imprimir tus boletas y comprantes desde la web.</span></div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -317,6 +304,9 @@ Palerp
       });
       $(document).ready(function(){
         $('.parallax').parallax();
+      });
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
       });
     });
 

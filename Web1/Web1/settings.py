@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'apps.productos',
     'apps.general',
     'apps.user',
-    'apps.compras',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -127,7 +126,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGIN_REDIRECT_URL = reverse_lazy('usuario')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 EMAIL_USE_TLS = True

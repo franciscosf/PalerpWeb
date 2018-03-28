@@ -1,8 +1,9 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
+{% block title%}Iniciar Sesion{% endblock %}
 {% block content %}
 <br>
-<div class="container" style="min-height:635px">
+<div class="container" style="min-height:800px">
   <div class="row">
     <div class="col l6 hide-on-med-and-down">
 
@@ -30,6 +31,7 @@
                       <label for="{{ form.username.id_for_label }}">Username</label>
                       {% for error in form.username.errors %}
                         <span class="helper-text" style="color: red">
+
                           {%  if error == 'This field is required.' %}Este campo es requerido.
                           {%  elif error == 'A user with that username already exists.' %}Este nombre de usuario ya existe.
                           {% else %}Username invalido.{% endif %}
@@ -52,7 +54,7 @@
                   <div class="container">
                     <p class="center-align">Aun no tienes una cuenta?<a href="{% url 'signup' %}"> Registrate</a></p>
                   </div>
-                  <br>  
+                  <br>
                   <button class="btn waves-effect right waves-light light-blue darken-2" type="submit" name="action">Entrar
                     <i class="material-icons right">send</i>
                   </button>

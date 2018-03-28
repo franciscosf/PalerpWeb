@@ -22,8 +22,8 @@ Tienda
 </div>
 {% endif %}
 <div class="container">
-	<div class="row" id="tienda" style="min-height: 620px;">
-		<div class="col s12 m8 l9 ">
+	<div class="row" id="tienda" style="min-height: 800px;">
+		<div class="col s12 m12 l9 ">
 			<h1 class="black-text center-align "><i class="material-icons medium">store</i> Tienda</h1>
 			<hr>
 			<div class="row" id="categorias">
@@ -39,10 +39,10 @@ Tienda
 		<div id="modal1" class="modal modal-fixed-footer">
     	<div class="modal-content ">
 				<div class="row">
-					<div class="col s4">
-						<img class="materialboxed" src="{% static 'images/noimagen.png' %}" alt="" height="200px" >
+					<div class="col s12 m4 l4">
+						<img class="materialboxed" src="{% static 'images/noimage.jpg' %}" alt="" height="200px" >
 					</div>
-					<div class="col s8">
+					<div class="col s12 m8 l8">
 						<h3 id="nombreProducto"></h3>
 						<p>Codigo: <span id="codigoProducto"></span></p>
 						<p>MiniCodigo: <span id="miniCodigoProducto"></span></p>
@@ -72,7 +72,7 @@ Tienda
 			</div>
 		</div>
 
-  	<div class="col m4 l3 hide-on-small-only">
+  	<div class="col m4 l3 hide-on-med-and-down">
   		<div class="toc-wrapper pinned" style="top: 70px;z-index: 100">
 	  		<div class="container" >
 	  			<div class="row">
@@ -83,7 +83,7 @@ Tienda
 		              <hr>
 		              <p>Aqui solo se muestra los objetos que usted esta seleccionando. Esto no lo compromete a pagar nada.</p>
 		              <hr>
-		              <div style="height: 220px;overflow: auto;" id="as">
+		              <div style="height: 220px;overflow: auto;">
 		               	<ul class="collection" id="carrito">
 
 									  </ul>
@@ -100,8 +100,33 @@ Tienda
 	  		</div>
   		</div>
   	</div>
+		<div class="fixed-action-btn hide-on-large-only">
+		  <a class="btn-floating btn-large red  modal-trigger" href="#modalTienda">
+		    <i class="large material-icons white red-text">shopping_cart</i>
+		  </a>
+		</div>
+		<div id="modalTienda" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+				<h5 class="card-title"><strong><i class="material-icons" style="font-size:35px">shopping_cart</i>Carrito de Compras</strong></h5>
+				<hr>
+				<p>Aqui solo se muestra los objetos que usted esta seleccionando. Esto no lo compromete a pagar nada.</p>
+				<hr>
+				<div style="height: 220px;overflow: auto;">
+					<ul class="collection" id="carrito1">
+
+					</ul>
+				</div>
+
+	    </div>
+	    <div class="modal-footer" style="height:100px">
+				<li>Total<i class="right" id="totalCarrito1">S/. 0.00</i></li>
+				<hr>
+	      <a class="modal-action right waves-effect waves-green btn-flat " id="btnVerCotizacion1">Comprar</a>
+				<a class="modal-action left modal-close waves-effect waves-green btn-flat " >Cerrar</a>
+	    </div>
+	  </div>
 	</div>
-	<div class="row hide" id="cotizacion" style="min-height: 620px;">
+	<div class="row hide" id="cotizacion" style="min-height: 800px;">
 	<div class="col s12">
 		<h5 class="center-align"><a class="waves-effect left waves-light btn-large white-text red darken-3" id="btnVolverTiendaCotizacion"><i class="material-icons">store</i><span class="hide-on-med-and-down"> Tienda</span></a></h5>
 		<h2 class="black-text center-align">Resumen de Compra</h2>
@@ -210,6 +235,10 @@ Tienda
 	}
 
 	function VerCotizacion(ev){
+		$('body, html').animate({
+			scrollTop: '0px'
+		}, 300);
+		$('.modal').modal('close');
 		if(Object.keys(productosEnCarrito).length === 0){
 			M.toast({html: 'El carrito esta vacio', classes: 'rounded'});
 
@@ -271,73 +300,123 @@ Tienda
 	//funcionalidad para agregar un prducto al carrito
 	function ShopOnclick(ev){
 		var producto = productos[this.id.substring(8)]
-		var id = "itemCarrito"+producto['categoria']+producto['nombre']
+		var id = "itemCarrito0"+producto['categoria']+producto['nombre']
+		var id1 = "itemCarrito1"+producto['categoria']+producto['nombre']
 
 		if(!document.getElementById(id)){
 			var carrito = document.getElementById('carrito')
+			var carrito1 = document.getElementById('carrito1')
 
 			var li = document.createElement('li')
 			li.classList.add('collection-item', 'avatar')
 			li.id = id
+			var li1 = document.createElement('li')
+			li1.classList.add('collection-item', 'avatar')
+			li1.id = id1
 
 			var i1 = document.createElement('i')
 			i1.classList.add('material-icons', 'circle', 'red', 'darken-3')
 			i1.innerText = 'shopping_basket'
+			var i11 = document.createElement('i')
+			i11.classList.add('material-icons', 'circle', 'red', 'darken-3')
+			i11.innerText = 'shopping_basket'
+
 
 			var span1 = document.createElement('span')
 			span1.classList.add('title')
 			span1.innerText = producto['nombre']
+			var span11 = document.createElement('span')
+			span11.classList.add('title')
+			span11.innerText = producto['nombre']
 
 			var p1 = document.createElement('p')
+			var p11 = document.createElement('p')
 
 			var div1 = document.createElement('div')
 			div1.classList.add('row')
+			var div11 = document.createElement('div')
+			div11.classList.add('row')
 
 			var div2 = document.createElement('div')
 			div2.classList.add('input-field', 'col', 's6')
+			var div21 = document.createElement('div')
+			div21.classList.add('input-field', 'col', 's6')
 
 			var input = document.createElement('input')
 			input.value = "1"
-			input.id = "cantidad"+producto['categoria']+producto['nombre']
+			input.id = "cantidad0"+producto['categoria']+producto['nombre']
 			input.type = "number"
 			input.min = "1"
 			input.addEventListener('change', aumentarCantidad)
+			var input1 = document.createElement('input')
+			input1.value = "1"
+			input1.id = "cantidad1"+producto['categoria']+producto['nombre']
+			input1.type = "number"
+			input1.min = "1"
+			input1.addEventListener('change', aumentarCantidad)
 
 			var label = document.createElement('label')
 			label.classList.add('active', 'black-text')
 			label.innerText = "Cantidad"
+			var label1 = document.createElement('label')
+			label1.classList.add('active', 'black-text')
+			label1.innerText = "Cantidad"
 
 			div2.appendChild(input)
 			div2.appendChild(label)
+			div21.appendChild(input1)
+			div21.appendChild(label1)
 
 			div1.appendChild(div2)
+			div11.appendChild(div21)
 
 			var i2 = document.createElement('i')
-			i2.id = "subTotal"+producto['categoria']+producto['nombre']
+			i2.id = "subTotal0"+producto['categoria']+producto['nombre']
 			i2.innerText = "S/. "+producto['precio']
+			var i21 = document.createElement('i')
+			i21.id = "subTotal1"+producto['categoria']+producto['nombre']
+			i21.innerText = "S/. "+producto['precio']
 
 			p1.appendChild(div1)
 			p1.append("SubTotal: ")
 			p1.appendChild(i2)
+			p11.appendChild(div11)
+			p11.append("SubTotal: ")
+			p11.appendChild(i21)
 
 			var a1 = document.createElement('a')
 			a1.classList.add('secondary-content')
-			a1.id = "closeItem"+producto['categoria']+producto['nombre']
+			a1.id = "closeItem0"+producto['categoria']+producto['nombre']
 			a1.style.cursor = 'pointer'
 			a1.addEventListener("click", delItemCarrito)
+			var a11 = document.createElement('a')
+			a11.classList.add('secondary-content')
+			a11.id = "closeItem1"+producto['categoria']+producto['nombre']
+			a11.style.cursor = 'pointer'
+			a11.addEventListener("click", delItemCarrito)
 
 			var i3 = document.createElement('i')
 			i3.classList.add('material-icons', 'red-text')
 			i3.innerText = "close"
+			var i31 = document.createElement('i')
+			i31.classList.add('material-icons', 'red-text')
+			i31.innerText = "close"
 
 			a1.appendChild(i3)
+			a11.appendChild(i31)
 
 			li.appendChild(i1)
 			li.appendChild(span1)
 			li.appendChild(p1)
 			li.appendChild(a1)
+			li1.appendChild(i11)
+			li1.appendChild(span11)
+			li1.appendChild(p11)
+			li1.appendChild(a11)
+
 
 			carrito.appendChild(li)
+			carrito1.appendChild(li1)
 
 			var productoDetalle = producto
 			productoDetalle['cantidad'] = 1
@@ -345,6 +424,8 @@ Tienda
 
 			var cantidad = producto['precio']
 			cantidad = parseFloat(cantidad)
+
+			M.toast({html: 'Articulo agregado', classes: 'rounded'});
 
 			actualizarTotal(cantidad, true)
 		}
@@ -357,20 +438,29 @@ Tienda
 
 	//funcionalidad para al momento de cambiar la cantidad de un producto
 	function aumentarCantidad(){
-		var id = this.id.substring(8)
+		var id = this.id.substring(9)
 
 		if(!isNaN(parseInt(this.value))){
 			var nuevaCantidad = parseInt(this.value)
+			if (nuevaCantidad < 1){
+				nuevaCantidad = 1
+			}
 			var producto = productosEnCarrito[id]
 			var precio = parseFloat(producto['precio'])
 			var actualCantidad = parseInt(producto['cantidad'])
-			this.value = nuevaCantidad
+			var input = document.getElementById("cantidad0" + id)
+			input.value = nuevaCantidad
+			var input1 = document.getElementById("cantidad1" + id)
+			input1.value = nuevaCantidad
 			var nPrecio = parseFloat(precio * nuevaCantidad)
 			var aPrecio = parseFloat(precio * actualCantidad)
 
-			var subTotalTag = document.getElementById("subTotal" + id)
+			var subTotalTag = document.getElementById("subTotal0" + id)
 			productosEnCarrito[id]['cantidad'] = nuevaCantidad
 			subTotalTag.innerText = "S/. " + (parseFloat(nPrecio).toFixed(2)).toString()
+
+			var subTotalTag1 = document.getElementById("subTotal1" + id)
+			subTotalTag1.innerText = "S/. " + (parseFloat(nPrecio).toFixed(2)).toString()
 
 			actualizarTotal(Math.abs(nPrecio - aPrecio), nPrecio > aPrecio)
 
@@ -384,20 +474,27 @@ Tienda
 	//funcionalidad para actualizar el total de la compra
 	function actualizarTotal(cantidad, suma){
 			var totCarritoTag = document.getElementById('totalCarrito')
+			var totCarritoTag1 = document.getElementById('totalCarrito1')
 			var totActual = totCarritoTag.innerText.substring(3)
+			var totActual1 = totCarritoTag1.innerText.substring(3)
 			totActual = parseFloat(totActual)
+			totActual1 = parseFloat(totActual1)
 			if(suma){
 				var totFinal = parseFloat(totActual + cantidad).toFixed(2)
+				var totFinal1 = parseFloat(totActual1 + cantidad).toFixed(2)
 			}else{
 				var totFinal = parseFloat(totActual - cantidad).toFixed(2)
+				var totFinal1 = parseFloat(totActual1 - cantidad).toFixed(2)
 			}
 			totCarritoTag.innerText = "S/. "+totFinal.toString()
+			totCarritoTag1.innerText = "S/. "+totFinal1.toString()
 	}
 
 	//funcionalidad para eliminar un item del carrito de compras
 	function delItemCarrito(ev){
-		var id = this.id.substring(9)
-		document.getElementById('carrito').removeChild(document.getElementById("itemCarrito"+id))
+		var id = this.id.substring(10)
+		document.getElementById('carrito').removeChild(document.getElementById("itemCarrito0"+id))
+		document.getElementById('carrito1').removeChild(document.getElementById("itemCarrito1"+id))
 
 		var producto = productosEnCarrito[id]
 		var cantidad = parseFloat(producto['precio'])
@@ -427,7 +524,7 @@ Tienda
 			var img1 = document.createElement('img')
 			img1.classList.add('materialboxed')
       img1.height = '220'
-			img1.src = "{% static 'images/noimagen.png' %}"
+			img1.src = "{% static 'images/noimage.jpg' %}"
 
 
 			div3.appendChild(img1)
@@ -463,6 +560,7 @@ Tienda
 			a2.classList.add('waves-effect', 'waves-light', 'btn', 'red', 'darken-3')
 			a2.id = "btnShop1" + producto['categoria'] + producto['nombre']
 			a2.addEventListener('click', ShopOnclick)
+			a2.innerHTML = "Agregar "
 
 			var i1 = document.createElement('i')
 			i1.classList.add('material-icons')
@@ -772,8 +870,11 @@ Tienda
 		var btnComprar = document.getElementById('btnComprar')
 		if(btnComprar != null)
 			btnComprar.addEventListener('click', comprar)
+
 		var btnVerCotizacion = document.getElementById('btnVerCotizacion')
 		btnVerCotizacion.addEventListener('click', VerCotizacion)
+		var btnVerCotizacion1 = document.getElementById('btnVerCotizacion1')
+		btnVerCotizacion1.addEventListener('click', VerCotizacion)
 		var btnVolverTiendaCotizacion = document.getElementById('btnVolverTiendaCotizacion')
 		btnVolverTiendaCotizacion.addEventListener('click', VolverCotizacion)
 		var btnVolverTienda = document.getElementById('btnVolverTienda2')

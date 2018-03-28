@@ -73,7 +73,7 @@ def activate(request, uidb64, token):
         return render(request, 'views/message.html', {
             'url_image': 'notok.png',
             'tittle_message': 'Error',
-            'message': 'El link de confirmacion al q usted desea ingresar ah expirado.',
+            'message': 'El link de confirmacion al que usted desea ingresar ah expirado.',
             'url_btn': 'index',
             'color_tittle': 'red-text',
             'btn_message': 'Ir a la pagina principal',

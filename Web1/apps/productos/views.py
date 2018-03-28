@@ -34,7 +34,7 @@ def tienda_view(request):
 		formatIntegerWithZeros(n2,5))
 		q.save()
 
-		return render(request, 'views/formToPayToPeru.html', {'user': cliente, 'compra': q} )
+		return render(request, 'views/formToPayToPeru.html', {'user': cliente, 'compra': q, 'RUCPalerp': '20491228297' })
 	else:
 		form = CompraForm()
 	productos = Producto.objects.all()

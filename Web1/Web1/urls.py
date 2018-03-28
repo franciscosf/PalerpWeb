@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 
 from apps.productos.views import tienda_view, prueba
-from apps.general.views import index_view, nosotros_view, contactanos_view, productos_view, post_contactanos_view
+from apps.general.views import index_view, nosotros_view, contactanos_view, productos_view, post_contactanos_view, usuario_view
 from apps.user.views import signup_view, activate
 from django.contrib.auth.views import login, logout_then_login
 
@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^tienda/$', tienda_view, name = 'tienda'),
     url(r'^$', index_view, name = 'index'),
     url(r'^nosotros/$', nosotros_view, name = 'nosotros'),
+    url(r'^usuario/$', login_required(usuario_view), name = 'usuario'),
     url(r'^signup/$', signup_view, name='signup'),
     url(r'^accounts/login/$', login, {'template_name':'views/login.html'}, name='login'),
     url(r'^logout/', logout_then_login, name = 'logout'),
