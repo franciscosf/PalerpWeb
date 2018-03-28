@@ -32,9 +32,9 @@ Palerp
     </li>
   </ul>
 </div>
-
-<div class="row">
-  <div class="col hide-on-med-and-down l3 offset-l8">
+<br>
+<div class="row hide-on-med-and-down">
+  <div class="col l3 offset-l8">
     <div class="toc-wrapper pinned" style="top: 70px;z-index: 100">
       <div class="container">
         <div class="row">
@@ -66,7 +66,7 @@ Palerp
                         {{ form.email.errors }}
                         <i class="material-icons prefix">mail</i>
                         {{ form.email }}
-                        <label for="{{ form.email.if_for_label }}">Email</label>
+                        <label for="{{ form.email.id_for_label }}">Email</label>
                       </div>
                       <div class="input-field col s12">
                         {{ form.telefono.errors }}
@@ -76,7 +76,7 @@ Palerp
                       </div>
 
                     </div>
-                    <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action">Contactenme!
+                    <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action" id="btnSubmitForm">Contactenme!
                       <i class="material-icons right">send</i>
                     </button>
                   </form>
@@ -91,49 +91,44 @@ Palerp
   </div>
 </div>
 <div class="section white hide-on-large-only">
-  <div class="container" style="z-index: 100">
+  <div class="container">
     <div class="row">
-      <div class="col m12 l12">
-        <div class="card hoverable white" >
+      <div class="col m12 l12 l12">
+        <div class="card white" >
           <div class="card-content black-text">
-            <h5 class="card-title"><strong>Dejanos contactarte</strong></h5>
+            <h5 class="card-title center-align"><strong>Dejanos contactarte</strong></h5>
             <hr>
-            <p>Envianos tus datos y te contactaremos.</p>
+            <p class="center-align">Envianos tus datos y te contactaremos.</p>
             <hr>
             <div class="row">
               <form class="col s12" method="post" action="{% url 'index' %}">
                 {% csrf_token %}
-                {{ form.non_field_errors }}
                 <div class="row">
                   <div class="input-field col s12">
-                    {{ form.RUC.errors }}
                     <i class="material-icons prefix">account_box</i>
-                    {{ form.RUC }}
-                    <label for="{{ form.RUC.id_for_label }}">RUC</label>
+                    <input id="id_RUC1" maxlength="12" name="RUC" type="tel" />
+                    <label for="id_RUC1">RUC</label>
                   </div>
                   <div class="input-field col s12">
-                    {{ form.nombre.errors }}
                     <i class="material-icons prefix">account_circle</i>
-                    {{ form.nombre }}
-                    <label for="{{ form.nombre.id_for_label }}">Nombres y Apellidos</label>
+                    <input id="id_nombre1" maxlength="100" name="nombre" type="text" />
+                    <label for="id_nombre1">Nombres y Apellidos</label>
                   </div>
                   <div class="input-field col s12">
-                    {{ form.email.errors }}
                     <i class="material-icons prefix">mail</i>
-                    {{ form.email }}
-                    <label for="{{ form.email.if_for_label }}">Email</label>
+                    <input id="id_email1" maxlength="150" name="email" type="email" />
+                    <label for="id_email1">Email</label>
                   </div>
                   <div class="input-field col s12">
-                    {{ form.telefono.errors }}
                     <i class="material-icons prefix">phone</i>
-                    {{ form.telefono }}
-                    <label for="{{ form.telefono.id_for_label }}">Telefono</label>
+                    <input id="id_telefono1" maxlength="15" name="telefono" type="tel" />
+                    <label for="id_telefono1">Telefono</label>
                   </div>
 
                 </div>
-                <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action">Contactenme!
+                <a class="btn waves-effect waves-light light-blue darken-2" id="btnEnviarForm1">Contactenme!
                   <i class="material-icons right">send</i>
-                </button>
+                </a>
               </form>
 
             </div>
@@ -304,10 +299,33 @@ Palerp
         indicators: false,
         height: 650,
         interval: 6000,
+      });
+      $(document).ready(function() {
+        M.updateTextFields();
+      });
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
     });
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-});
+
+    setTimeout(function (){
+      var btnEnviarForm1 = document.getElementById('btnEnviarForm1')
+      btnEnviarForm1.addEventListener('click', function (ev){
+        var ruc = document.getElementById('id_RUC')
+        var ruc1 = document.getElementById('id_RUC1')
+        ruc.value = ruc1.value
+        var nombre = document.getElementById('id_nombre')
+        var nombre1 = document.getElementById('id_nombre1')
+        nombre.value = nombre1.value
+        var email = document.getElementById('id_email')
+        var email1 = document.getElementById('id_email1')
+        email.value =  email1.value
+        var telefono = document.getElementById('id_telefono')
+        var telefono1 = document.getElementById('id_telefono1')
+        telefono.value = telefono1.value
+        var btnSubmitForm = document.getElementById('btnSubmitForm')
+        btnSubmitForm.click()
+      })
+    },0)
 </script>
 {% endblock %}

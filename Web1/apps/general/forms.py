@@ -22,8 +22,8 @@ class PosibleClienteForm(forms.ModelForm):
         }
 
         widgets = {
-            'RUC' : forms.TextInput(attrs={'class':'validate','type':'tel'}),
-            'nombre' : forms.TextInput(attrs={'class':'validate','type':'text'}),
-            'email' : forms.TextInput(attrs={'class':'validate','type':'email'}),
-            'telefono' : forms.TextInput(attrs={'class':'validate','type':'tel'}),            
+            'RUC' : forms.TextInput(attrs={'type':'tel'}),
+            'nombre' : forms.TextInput(attrs={'type':'text'}),
+            'email' : forms.TextInput(attrs={'type':'email'}),
+            'telefono' : forms.TextInput(attrs={'type':'tel'}),            
         }

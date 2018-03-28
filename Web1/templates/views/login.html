@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 <br>
 <div class="container" style="min-height:635px">
@@ -11,6 +11,7 @@
           <div class="card hoverable white" >
             <div class="card-content black-text">
               <h5 class="card-title center-align" style="font-size:40px"><strong>Inicia Sesion</strong></h5>
+              <h5 class="center-align"><img src="{% static 'images/login.png' %}" alt=""></h5>
               <br>
               <hr>
               <p class="center-align">Ingresa tu nombre de usuario y tu contraseña.</p>
@@ -20,7 +21,6 @@
 
                 <form class="col s12" method="post">
                   {% csrf_token %}
-                  {{ form.non_field_errors }}
                   <div class="row">
 
                     <div class="input-field col s12">
@@ -39,9 +39,9 @@
                     <div class="input-field col s12 m12 l12">
 
                       <i class="material-icons prefix">lock</i>
-                      {{ form.password1 }}
-                      <label for="{{ form.password1.id_for_label }}">Contraseña</label>
-                      {% for error in form.password1.errors %}
+                      {{ form.password }}
+                      <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                      {% for error in form.password.errors %}
                         <span class="helper-text"  style="color: red">
                           {%  if error == 'This field is required.' %}Este campo es requerido.
                           {% else %}Contraseña invalida.{% endif %}
@@ -52,7 +52,7 @@
                   <div class="container">
                     <p class="center-align">Aun no tienes una cuenta?<a href="{% url 'signup' %}"> Registrate</a></p>
                   </div>
-                  <button class="btn waves-effect right waves-light light-blue darken-2" type="submit" name="action">Registrar
+                  <button class="btn waves-effect right waves-light light-blue darken-2" type="submit" name="action">Entrar
                     <i class="material-icons right">send</i>
                   </button>
                 </form>

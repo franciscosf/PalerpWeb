@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,3 +15,15 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Compra(models.Model):
+    codigo = models.CharField(max_length = 10, null = True)
+    tabladetalle = models.TextField()
+    importe = models.FloatField()
+    cliente = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+    nitems = models.IntegerField()
+    def __str__(self):
+        return self.codigo

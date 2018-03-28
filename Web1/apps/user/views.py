@@ -16,9 +16,6 @@ from apps.user.forms import RegistroForm
 
 # Create your views here.
 
-def login_view(request):
-    return render(request, 'views/login.html')
-
 
 def signup_view(request):
     if request.method == 'POST':
@@ -68,7 +65,7 @@ def activate(request, uidb64, token):
             'url_image': 'ok.png',
             'tittle_message': 'Activacion correcta',
             'message': 'Su cuenta ah sido activada correctamente ahora puede iniciar su sesion.',
-            'url_btn': 'index',
+            'url_btn': 'login',
             'color_tittle': 'green-text',
             'btn_message': 'Iniciar Sesion',
         })

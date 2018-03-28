@@ -1,16 +1,18 @@
 {% extends 'base/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 <br>
 <div class="container" style="min-height:635px">
   <div class="row">
-    <div class="col l6 hide-on-med-and-down">
+    <div class="col s12 m12 l6">
 
     </div>
     <div class="col s12 m12 l6">
           <div class="card hoverable white" >
             <div class="card-content black-text">
               <h5 class="card-title center-align" style="font-size:40px"><strong>Registrate</strong></h5>
+              <h5 class="center-align"><img src="{% static 'images/login.png' %}" alt=""></h5>
               <br>
               <hr>
               <p class="center-align">Registrate y unete a la familia Palerp.</p>

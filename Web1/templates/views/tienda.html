@@ -6,11 +6,21 @@ Tienda
 {% endblock %}
 
 {% block extraMeta %}
-<meta http-equiv="Expires" content="0" />
-<meta http-equiv="Pragma" content="no-cache" />
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<div class="hide">
+	<form action="{% url 'tienda' %}" method="post" novalidate>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" name="send" value="send" id="btnSubmitForm">
+	</form>
+	<form >
+		<input id="id_user" type="number" name="id_user" value="{{ request.user.id }}">
+	</form>
+</div>
+{% endif %}
 <div class="container">
 	<div class="row" id="tienda" style="min-height: 620px;">
 		<div class="col s12 m8 l9 ">
@@ -30,7 +40,7 @@ Tienda
     	<div class="modal-content ">
 				<div class="row">
 					<div class="col s4">
-						<img class="materialboxed" src="{% static 'images/noimagen.png' %}" alt="" height="200px" width="200px">
+						<img class="materialboxed" src="{% static 'images/noimagen.png' %}" alt="" height="200px" >
 					</div>
 					<div class="col s8">
 						<h3 id="nombreProducto"></h3>
@@ -48,19 +58,19 @@ Tienda
 				</div>
 				<br>
 			</div>
-				<div class="modal-footer" style="height:100px;">
-					<div class="container">
-						<div class="row">
-							<div class="col s6">
-								<h5 class="left-align"><a class="waves-effect waves-light btn red darken-3" id="btnVolverTienda2"><i class="material-icons white-text">arrow_back</i> Volver</a></h5>
-							</div>
-							<div class="col s6" id="divBtnAgregar3">
-								<h5 class="right-align"><a class="waves-effect waves-light btn red darken-3"><i class="material-icons white-text">shopping_cart</i> Agregar</a></h5>
-							</div>
+			<div class="modal-footer" style="height:100px;">
+				<div class="container">
+					<div class="row">
+						<div class="col s6">
+							<h5 class="left-align"><a class="waves-effect waves-light btn red darken-3" id="btnVolverTienda2"><i class="material-icons white-text">arrow_back</i> Volver</a></h5>
+						</div>
+						<div class="col s6" id="divBtnAgregar3">
+							<h5 class="right-align"><a class="waves-effect waves-light btn red darken-3"><i class="material-icons white-text">shopping_cart</i> Agregar</a></h5>
 						</div>
 					</div>
 				</div>
-		</div >
+			</div>
+		</div>
 
   	<div class="col m4 l3 hide-on-small-only">
   		<div class="toc-wrapper pinned" style="top: 70px;z-index: 100">
@@ -83,42 +93,55 @@ Tienda
 		              	<li>Total<i class="right" id="totalCarrito">S/. 0.00</i></li>
 		            </div>
 		          </div>
-			          <h5 class=""><a class="waves-effect left waves-light btn white red-text text-darken-3" id="btnVaciarCarrito"><i class="material-icons">delete</i><span class="hide-on-med-and-down"> Vaciar</span></a></h5>
-			          <h5 class=""><a class="waves-effect right waves-light btn white red-text text-darken-3" id="btnVerCotizacion"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down"> Comprar</span></a></h5>
-			        </div>
-			      </div>
-		  		</div>
+		          <h5 class=""><a class="waves-effect left waves-light btn white red-text text-darken-3" id="btnVaciarCarrito"><i class="material-icons">delete</i><span class="hide-on-med-and-down"> Vaciar</span></a></h5>
+		          <h5 class=""><a class="waves-effect right waves-light btn white red-text text-darken-3" id="btnVerCotizacion"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down"> Comprar</span></a></h5>
+		        </div>
+		      </div>
 	  		</div>
-	  	</div>
+  		</div>
   	</div>
-		<div class="row hide" id="cotizacion" style="min-height: 620px;">
-			<div class="col s12">
-				<h5 class="center-align"><a class="waves-effect left waves-light btn-large white-text red darken-3" id="btnVolverTiendaCotizacion"><i class="material-icons">store</i><span class="hide-on-med-and-down"> Tienda</span></a></h5>
-				<h2 class="black-text center-align">Resumen de Compra</h2>
-				<hr>
-			 	<h5 class="center-align">Este es el detalle de su compra, revise que todos los items sean los que usted ha seleccionado, si usted esta conforme con la compra presione el boton COMPRAR que esta en la parte final de la tabla, en caso de querer modificar algun item presione el boton TIENDA que se encuentra en la parte superior.</h5>
-				<hr>
-				<br>
-				<table class="highlight">
-		      <thead class="left-align">
-		        <tr>
-							<th>Item</th>
-	            <th>Nombre</th>
-	            <th>Cantidad</th>
-							<th>Vr. Unitario</th>
-							<th>Vr. Total</th>
-		        </tr>
-		      </thead>
-					<tbody id="tbodyResumenCompra">
+	</div>
+	<div class="row hide" id="cotizacion" style="min-height: 620px;">
+	<div class="col s12">
+		<h5 class="center-align"><a class="waves-effect left waves-light btn-large white-text red darken-3" id="btnVolverTiendaCotizacion"><i class="material-icons">store</i><span class="hide-on-med-and-down"> Tienda</span></a></h5>
+		<h2 class="black-text center-align">Resumen de Compra</h2>
+		<hr>
+	 	<h5 class="center-align">Este es el detalle de su compra, revise que todos los items sean los que usted ha seleccionado, si usted esta conforme con la compra presione el boton COMPRAR que esta en la parte final de la tabla, en caso de querer modificar algun item presione el boton TIENDA que se encuentra en la parte superior.</h5>
+		<hr>
+		<br>
+		<table class="highlight" id = 'tablaResumen'>
+      <thead class="left-align">
+        <tr>
+					<th>Item</th>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+					<th>Vr. Unitario</th>
+					<th>Vr. Total</th>
+        </tr>
+      </thead>
+			<tbody id="tbodyResumenCompra">
 
-					</tbody>
-      	</table>
-				<br>
-				<h5 class=""><a class="waves-effect right waves-light btn-large white-text red darken-3" id="btnVerCotizacion"><i class="material-icons">shopping_cart</i><span class="hide-on-med-and-down"> Comprar</span></a></h5>
+			</tbody>
+  	</table>
+		<br>
+		{% if user.is_authenticated %}
+			<h5 class=""><a class="waves-effect right waves-light btn-large white-text red darken-3" id="btnComprar"><i class="material-icons">shopping_cart</i><span class=""> Comprar</span></a></h5>
+		{% else %}
+			<div class="row">
+				<h5 class=""><a class="waves-effect right waves-light btn-large white-text red darken-3 disabled"><i class="material-icons">shopping_cart</i><span class=""> Comprar</span></a></h5>
+			</div>
+			<div class="row">
+				<p class="right"> Para realizar una compra debe iniciar sesion.</p>
+			</div>
+			<div class="row">
+				<h5 class=""><a class="waves-effect right waves-light btn-large white-text red darken-3" href="{% url 'login' %}"><i class="material-icons">account_circle</i><span class=""> Iniciar Sesion</span></a></h5>
+			</div>
 
-		  	</div>
-	  	</div>
-		</div>
+		{% endif %}
+
+
+  	</div>
+	</div>
 </div>
 {% endblock %}
 
@@ -711,11 +734,44 @@ Tienda
 		productosEnCarrito = {}
 	}
 
+	function comprar(ev){
+		var nitems = Object.keys(productosEnCarrito).length
 
+		var inputTabla = document.getElementById('id_tabladetalle')
+		var tablaResumen = document.getElementById('tablaResumen')
+		inputTabla.value = document.getHTML(tablaResumen,true)
+		var inputImporte = document.getElementById('id_importe')
+		var totalCarrito = document.getElementById('totalCarrito')
+		inputImporte.value = parseFloat(totalCarrito.innerHTML.substring(4))
+		var inputCliente = document.getElementById('id_cliente')
+		var idCliente = document.getElementById('id_user')
+		inputCliente.value = idCliente.value
+		var inputnItems = document.getElementById('id_nitems')
+		inputnItems.value = nitems
+
+		var btnSend = document.getElementById('btnSubmitForm')
+		btnSend.click()
+	}
+
+	document.getHTML = function(who, deep){
+    if(!who || !who.tagName) return '';
+    var txt, ax, el= document.createElement("div");
+    el.appendChild(who.cloneNode(false));
+    txt= el.innerHTML;
+    if(deep){
+        ax= txt.indexOf('>')+1;
+        txt= txt.substring(0, ax)+who.innerHTML+ txt.substring(ax);
+    }
+    el= null;
+    return txt;
+}
 
 
   //funcion asicrona para hacer ciertas acciones
   setTimeout(function(){
+		var btnComprar = document.getElementById('btnComprar')
+		if(btnComprar != null)
+			btnComprar.addEventListener('click', comprar)
 		var btnVerCotizacion = document.getElementById('btnVerCotizacion')
 		btnVerCotizacion.addEventListener('click', VerCotizacion)
 		var btnVolverTiendaCotizacion = document.getElementById('btnVolverTiendaCotizacion')

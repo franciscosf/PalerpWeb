@@ -23,20 +23,35 @@
               <a href="#!" class="brand-logo white-text"><i class="material-icons" style="font-size:30px">library_books</i> Palerp</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
+                  {% if user.is_authenticated %}
+                    <li><a class="white-text active" href=""><strong>{{ user.get_username|upper }}</strong></a></li>
+                  {% endif %}
                   <li><a class="white-text" href="{% url 'index' %}">Inicio</a></li>
                   <li><a class="white-text" href="{% url 'nosotros' %}">Nosotros</a></li>
                   <li><a class="white-text" href="{% url 'productos' %}">Productos</a></li>
                   <li><a class="white-text" href="{% url 'tienda' %}">Tienda</a></li>
                   <li><a class="white-text" href="{% url 'contactanos' %}">Contacto</a></li>
-                  <li><a class="white-text" href="{% url 'login' %}">Log in</a></li>
+                  {% if user.is_authenticated %}
+                    <li><a class="white-text" href="{% url 'logout' %}">Salir</a></li>
+                  {% else %}
+                    <li><a class="white-text" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                  {% endif %}
               </ul>
               <ul class="sidenav" id="mobile-demo">
+                  {% if user.is_authenticated %}
+                    <li><a class="grey-text text-darken-3" href=""><strong>{{ user.get_username|upper }}</strong></a></a></li>
+                  {% endif %}
                   <li><a class="grey-text text-darken-3" href="{% url 'index' %}">Inicio</a></li>
                   <li><a class="grey-text text-darken-3" href="{% url 'nosotros' %}">Nosotros</a></li>
                   <li><a class="grey-text text-darken-3" href="{% url 'productos' %}">Productos</a></li>
                   <li><a class="grey-text text-darken-3" href="{% url 'tienda' %}">Tienda</a></li>
                   <li><a class="grey-text text-darken-3" href="{% url 'contactanos' %}">Contacto</a></li>
-                  <li><a class="grey-text text-darken-3" href="{% url 'login' %}">Log in</a></li>
+
+                  {% if user.is_authenticated %}
+                    <li><a class="grey-text text-darken-3" href="{% url 'logout' %}">Salir</a></li>
+                  {% else %}
+                    <li><a class="grey-text text-darken-3" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                  {% endif %}
               </ul>
           </div>
       </div>
